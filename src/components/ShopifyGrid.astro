@@ -1,8 +1,13 @@
 ---
-// src/components/ShopifyGrid.astro
 const clients = [
-  'Ahvic', 'Ballyhoo', 'Borém Cafés', 'Lorens Giron',
-  'Mrs Home', 'Soprata', 'Tegape', 'TrocaTech'
+  { label: 'Ahvic', key: 'ahvic' },
+  { label: 'Ballyhoo', key: 'ballyhoo' },
+  { label: 'Borém Cafés', key: 'borem' },
+  { label: 'Lorens Giron', key: 'lorens' },
+  { label: 'Mrs Home', key: 'mrshome' },
+  { label: 'Soprata', key: 'soprata' },
+  { label: 'Tegape', key: 'tegape' },
+  { label: 'TrocaTech', key: 'trocatech' },
 ];
 ---
 
@@ -10,9 +15,9 @@ const clients = [
   <h3 class="sub-title" data-i18n="projects.shopify.others.label">Outros Clientes</h3>
   <ul class="clients-grid">
     {clients.map(client => (
-      <li class="client-item">
+      <li class="client-item" data-store={client.key}>
         <span class="client-dot"></span>
-        {client}
+        {client.label}
       </li>
     ))}
   </ul>
@@ -50,12 +55,15 @@ const clients = [
     font-family: var(--font-heading);
     font-size: 0.9rem;
     color: var(--text-muted);
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    user-select: none;
   }
 
   .client-item:hover {
-    border-color: var(--accent-purple);
+    border-color: var(--accent-cyan);
     color: var(--text);
+    box-shadow: 0 0 16px rgba(0, 212, 255, 0.08);
   }
 
   .client-dot {

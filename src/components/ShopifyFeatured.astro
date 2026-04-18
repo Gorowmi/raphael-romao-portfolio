@@ -1,5 +1,4 @@
 ---
-// src/components/ShopifyFeatured.astro
 import ProjectCard from './ProjectCard.astro';
 ---
 
@@ -7,21 +6,27 @@ import ProjectCard from './ProjectCard.astro';
   <h3 class="sub-title" data-i18n="projects.shopify.featured.label">Shopify — Trabalhos em Destaque</h3>
   <p class="shopify-role" data-i18n="projects.shopify.role">Lojas em que atuei como desenvolvedor Shopify — customizações de tema, features e integrações.</p>
   <div class="cards-grid">
-    <ProjectCard
-      name="Simboliq"
-      descKey="projects.simboliq.description"
-      stack={['Shopify', 'Liquid', 'Prestige Theme', 'CSS']}
-    />
-    <ProjectCard
-      name="JoyaClean"
-      descKey="projects.joyaclean.description"
-      stack={['Shopify', 'Liquid', 'Glaze Theme', 'Metafields', 'CSS']}
-    />
-    <ProjectCard
-      name="Testyou"
-      descKey="projects.testyou.description"
-      stack={['Shopify', 'Liquid', 'JavaScript', 'Symmetry Theme']}
-    />
+    <div class="store-trigger" data-store="simboliq">
+      <ProjectCard
+        name="Simboliq"
+        descKey="projects.simboliq.description"
+        stack={['Shopify', 'Liquid', 'Prestige Theme', 'CSS']}
+      />
+    </div>
+    <div class="store-trigger" data-store="joyaclean">
+      <ProjectCard
+        name="JoyaClean"
+        descKey="projects.joyaclean.description"
+        stack={['Shopify', 'Liquid', 'Glaze Theme', 'Metafields', 'CSS']}
+      />
+    </div>
+    <div class="store-trigger" data-store="testyou">
+      <ProjectCard
+        name="Testyou"
+        descKey="projects.testyou.description"
+        stack={['Shopify', 'Liquid', 'JavaScript', 'Symmetry Theme']}
+      />
+    </div>
   </div>
 </div>
 
@@ -50,5 +55,14 @@ import ProjectCard from './ProjectCard.astro';
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
+  }
+
+  .store-trigger {
+    cursor: pointer;
+  }
+
+  .store-trigger:hover :global(.project-card) {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 24px rgba(0, 212, 255, 0.08);
   }
 </style>
