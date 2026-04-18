@@ -92,3 +92,13 @@ footer {
   color: var(--text-muted);
   border-top: 1px solid var(--border);
 }
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
