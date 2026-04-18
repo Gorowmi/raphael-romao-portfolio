@@ -11,6 +11,7 @@
       </div>
     </div>
     <div class="modal-body">
+      <h2 id="modal-name"></h2>
       <div id="modal-tags"></div>
       <p id="modal-description"></p>
     </div>
@@ -121,6 +122,13 @@
     gap: 1rem;
   }
 
+  #modal-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+  }
+
   #modal-description {
     color: var(--text-muted);
     font-size: 0.95rem;
@@ -194,6 +202,7 @@
   const bannerBg = document.getElementById('modal-banner-bg') as HTMLImageElement;
   const logoEl = document.getElementById('modal-logo') as HTMLImageElement;
   const logoWrap = overlay.querySelector('.modal-logo-wrap') as HTMLElement;
+  const nameEl = document.getElementById('modal-name')!;
   const tagsEl = document.getElementById('modal-tags')!;
   const descEl = document.getElementById('modal-description')!;
   const linkEl = document.getElementById('modal-link') as HTMLAnchorElement;
@@ -206,6 +215,8 @@
 
     bannerBg.src = store.banner;
     bannerBg.alt = store.name;
+
+    nameEl.textContent = store.name;
 
     if (store.logo) {
       logoEl.src = store.logo;

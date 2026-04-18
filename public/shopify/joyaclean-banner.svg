@@ -4,18 +4,10 @@
       <stop offset="0%" stop-color="#1a0e06"/>
       <stop offset="100%" stop-color="#120800"/>
     </linearGradient>
-    <linearGradient id="brown" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#c49a6c"/>
-      <stop offset="100%" stop-color="#a0724a"/>
-    </linearGradient>
   </defs>
   <rect width="560" height="200" fill="url(#bg)"/>
-  <!-- organic leaf-like shapes -->
-  <ellipse cx="470" cy="70" rx="60" ry="90" fill="none" stroke="#8B5E3C" stroke-width="0.8" opacity="0.25" transform="rotate(-30 470 70)"/>
-  <ellipse cx="490" cy="90" rx="45" ry="70" fill="none" stroke="#8B5E3C" stroke-width="0.6" opacity="0.18" transform="rotate(20 490 90)"/>
-  <ellipse cx="460" cy="110" rx="30" ry="50" fill="#8B5E3C" opacity="0.06" transform="rotate(-10 460 110)"/>
-  <rect x="50" y="132" width="240" height="1" fill="url(#brown)" opacity="0.5"/>
-  <text x="50" y="100" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="url(#brown)" letter-spacing="5">JOY.A</text>
-  <text x="50" y="128" font-family="Georgia, serif" font-size="22" fill="#d4b896" letter-spacing="3">CLEAN BEAUTY</text>
-  <text x="51" y="148" font-family="Arial, sans-serif" font-size="10" fill="#8B5E3C" letter-spacing="4">NATURAL IS THE NEW LUXURY</text>
+  <ellipse cx="470" cy="70" rx="60" ry="90" fill="none" stroke="#8B5E3C" stroke-width="0.8" opacity="0.22" transform="rotate(-30 470 70)"/>
+  <ellipse cx="490" cy="100" rx="45" ry="70" fill="none" stroke="#8B5E3C" stroke-width="0.6" opacity="0.15" transform="rotate(20 490 100)"/>
+  <ellipse cx="460" cy="120" rx="30" ry="50" fill="#8B5E3C" opacity="0.06" transform="rotate(-10 460 120)"/>
+  <ellipse cx="80" cy="150" rx="55" ry="80" fill="none" stroke="#c49a6c" stroke-width="0.5" opacity="0.1" transform="rotate(15 80 150)"/>
 </svg>
