@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
 ---
 
 <html lang="pt-BR">
@@ -10,8 +13,10 @@ import '../styles/global.css';
     <title>Raphael Romão — Portfolio</title>
   </head>
   <body>
+    <Nav />
     <main>
-      <p style="color: white; padding: 2rem;">Setup OK</p>
+      <Hero />
+      <About />
     </main>
   </body>
 </html>
