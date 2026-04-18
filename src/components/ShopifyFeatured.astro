@@ -4,7 +4,8 @@ import ProjectCard from './ProjectCard.astro';
 ---
 
 <div class="featured-section">
-  <h3 class="sub-title" data-i18n="projects.shopify.featured.label">Shopify — Clientes em Destaque</h3>
+  <h3 class="sub-title" data-i18n="projects.shopify.featured.label">Shopify — Trabalhos em Destaque</h3>
+  <p class="shopify-role" data-i18n="projects.shopify.role">Lojas em que atuei como desenvolvedor Shopify — customizações de tema, features e integrações.</p>
   <div class="cards-grid">
     <ProjectCard
       name="Simboliq"
@@ -27,6 +28,13 @@ import ProjectCard from './ProjectCard.astro';
 <style>
   .featured-section {
     margin-bottom: 4rem;
+  }
+
+  .shopify-role {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    max-width: 560px;
   }
 
   .sub-title {
