@@ -1,0 +1,115 @@
+---
+// src/components/Stack.astro
+const categories = [
+  {
+    key: 'stack.frontend',
+    label: 'Frontend',
+    items: ['React', 'Next.js', 'Astro', 'PixiJS']
+  },
+  {
+    key: 'stack.backend',
+    label: 'Backend',
+    items: ['Node.js', 'Express', 'Python']
+  },
+  {
+    key: 'stack.ecommerce',
+    label: 'E-commerce',
+    items: ['Shopify', 'Liquid', 'Metafields']
+  },
+  {
+    key: 'stack.ai',
+    label: 'Dados & IA',
+    items: ['Claude API', 'Supabase', 'Pandas']
+  },
+  {
+    key: 'stack.infra',
+    label: 'Infra',
+    items: ['Vercel', 'Socket.io', 'Git']
+  }
+];
+---
+
+<section id="stack">
+  <div class="section fade-in">
+    <h2 class="section-title" data-i18n="stack.title">Stack</h2>
+    <div class="stack-grid">
+      {categories.map(cat => (
+        <div class="stack-category">
+          <h4 class="cat-label" data-i18n={cat.key}>{cat.label}</h4>
+          <ul class="tech-list">
+            {cat.items.map(item => (
+              <li class="tech-item">
+                <span class="tech-dot"></span>
+                <span class="tech-name">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+  }
+
+  .stack-category {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    transition: border-color 0.3s;
+  }
+
+  .stack-category:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+  }
+
+  .cat-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    margin-bottom: 1rem;
+  }
+
+  .tech-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .tech-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .tech-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-purple);
+    flex-shrink: 0;
+  }
+
+  .tech-name {
+    font-family: var(--font-mono);
+  }
+
+  @media (max-width: 900px) {
+    .stack-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

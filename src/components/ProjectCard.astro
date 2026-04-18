@@ -1,0 +1,76 @@
+---
+// src/components/ProjectCard.astro
+interface Props {
+  name: string;
+  descKey: string;
+  stack: string[];
+  image?: string;
+  link?: string;
+}
+const { name, descKey, stack, image, link } = Astro.props;
+---
+
+<article class="project-card fade-in">
+  {image && <img src={image} alt={name} class="project-image" loading="lazy" />}
+  <div class="project-body">
+    <h3 class="project-name">{name}</h3>
+    <p class="project-desc" data-i18n={descKey}></p>
+    <div class="project-stack">
+      {stack.map(s => <span class="badge">{s}</span>)}
+    </div>
+    {link && <a class="project-link" href={link} target="_blank" rel="noopener">Ver projeto →</a>}
+  </div>
+</article>
+
+<style>
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 24px rgba(0, 212, 255, 0.08);
+  }
+
+  .project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .project-name {
+    font-size: 1.2rem;
+    color: var(--text);
+  }
+
+  .project-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .project-link {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+    margin-top: 0.5rem;
+  }
+</style>

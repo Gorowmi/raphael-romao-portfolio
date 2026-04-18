@@ -1,0 +1,46 @@
+---
+// src/components/ShopifyFeatured.astro
+import ProjectCard from './ProjectCard.astro';
+---
+
+<div class="featured-section">
+  <h3 class="sub-title" data-i18n="projects.shopify.featured.label">Shopify — Clientes em Destaque</h3>
+  <div class="cards-grid">
+    <ProjectCard
+      name="Simboliq"
+      descKey="projects.simboliq.description"
+      stack={['Shopify', 'Liquid', 'Prestige Theme', 'CSS']}
+    />
+    <ProjectCard
+      name="JoyaClean"
+      descKey="projects.joyaclean.description"
+      stack={['Shopify', 'Liquid', 'Glaze Theme', 'Metafields', 'CSS']}
+    />
+    <ProjectCard
+      name="Testyou"
+      descKey="projects.testyou.description"
+      stack={['Shopify', 'Liquid', 'JavaScript', 'Symmetry Theme']}
+    />
+  </div>
+</div>
+
+<style>
+  .featured-section {
+    margin-bottom: 4rem;
+  }
+
+  .sub-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

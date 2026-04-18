@@ -1,0 +1,76 @@
+---
+// src/components/ShopifyGrid.astro
+const clients = [
+  'Ahvic', 'Ballyhoo', 'Borém Cafés', 'Lorens Giron',
+  'Mrs Home', 'Soprata', 'Tegape', 'TrocaTech'
+];
+---
+
+<div class="grid-section fade-in">
+  <h3 class="sub-title" data-i18n="projects.shopify.others.label">Outros Clientes</h3>
+  <ul class="clients-grid">
+    {clients.map(client => (
+      <li class="client-item">
+        <span class="client-dot"></span>
+        {client}
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .grid-section {
+    margin-bottom: 2rem;
+  }
+
+  .sub-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .clients-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .client-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .client-item:hover {
+    border-color: var(--accent-purple);
+    color: var(--text);
+  }
+
+  .client-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .clients-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .clients-grid { grid-template-columns: 1fr; }
+  }
+</style>
