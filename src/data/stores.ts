@@ -1,8 +1,8 @@
 export interface Store {
   name: string;
   url: string | null;
-  banner: string | null;
-  bannerGradient: string;
+  logo: string | null;
+  banner: string;
   tags: string[];
   description: string;
   status: 'active' | 'construction';
@@ -12,8 +12,8 @@ export const stores: Record<string, Store> = {
   ahvic: {
     name: 'Ahvic',
     url: 'https://ahvic.com.br',
-    banner: null,
-    bannerGradient: 'linear-gradient(135deg, #00d4ff 0%, #0066cc 100%)',
+    logo: 'https://ahvic.com.br/cdn/shop/files/Arquivos_da_Marca_Horizontal_Principal_1.svg?height=60&v=1763089056',
+    banner: '/shopify/ahvic-banner.svg',
     tags: ['Moda Esportiva', 'Fitness', 'Beachwear', 'Running'],
     description: 'Roupas esportivas e fitness para quem vive em movimento. Coleções de fitness, praia e running com estilo e tecnologia.',
     status: 'active',
@@ -21,8 +21,8 @@ export const stores: Record<string, Store> = {
   ballyhoo: {
     name: 'Ballyhoo',
     url: null,
-    banner: null,
-    bannerGradient: 'linear-gradient(135deg, #2a2a3e 0%, #1a1a2e 100%)',
+    logo: null,
+    banner: '/shopify/construction-banner.svg',
     tags: ['Em Breve'],
     description: 'Projeto em desenvolvimento. Em breve novidades.',
     status: 'construction',
@@ -30,8 +30,8 @@ export const stores: Record<string, Store> = {
   borem: {
     name: 'Borém Cafés',
     url: null,
-    banner: null,
-    bannerGradient: 'linear-gradient(135deg, #6b3a1f 0%, #3d1f0a 100%)',
+    logo: null,
+    banner: '/shopify/construction-banner.svg',
     tags: ['Em Breve', 'Cafés'],
     description: 'Projeto em desenvolvimento. Em breve novidades.',
     status: 'construction',
@@ -39,8 +39,8 @@ export const stores: Record<string, Store> = {
   lorens: {
     name: 'Lorens Giron',
     url: 'https://lorensgiron.com/pt',
-    banner: null,
-    bannerGradient: 'linear-gradient(135deg, #c9a84c 0%, #7b2d8b 100%)',
+    logo: 'https://lorensgiron.com/cdn/shop/files/LOGO_HORIIZONTA_SEM_FUNDO_DOURADA.png?v=1724350180&width=400',
+    banner: '/shopify/lorens-banner.svg',
     tags: ['Fine Jewelry', 'Ouro 18k', 'Diamantes', 'Custom Design'],
     description: 'Joias de luxo handmade com diamantes e pedras preciosas em ouro 18k. Each detail is made with love.',
     status: 'active',
@@ -48,8 +48,8 @@ export const stores: Record<string, Store> = {
   mrshome: {
     name: 'Mrs Home',
     url: 'https://www.mrshome.com.br',
-    banner: null,
-    bannerGradient: 'linear-gradient(135deg, #e91e8c 0%, #7b2d8b 100%)',
+    logo: 'https://www.mrshome.com.br/cdn/shop/files/Logo_mrs_home_500_dpi_sem_fundo_2_85c1df08-e8aa-4e51-b166-1fd8e9543f8e.png',
+    banner: '/shopify/mrshome-banner.svg',
     tags: ['Moda Íntima', 'Pijamas', 'Lingerie', 'Lifestyle'],
     description: 'Moda íntima e pijamas para toda a família. Somos um estilo de vida.',
     status: 'active',
@@ -57,8 +57,8 @@ export const stores: Record<string, Store> = {
   soprata: {
     name: 'Soprata',
     url: 'https://www.soprata.com.br',
-    banner: 'https://www.soprata.com.br/cdn/shop/files/banner-principal-desk.jpg?v=1775745464&width=1200',
-    bannerGradient: 'linear-gradient(135deg, #c0c0c0 0%, #4a4a6a 100%)',
+    logo: 'https://www.soprata.com.br/cdn/shop/files/logo-so-prata-joias-em-prata-2x_5b2e6b1c-d66e-4acd-aa4e-6c6d0e2f0c29.png',
+    banner: '/shopify/soprata-banner.svg',
     tags: ['Joias de Prata', 'Alianças', 'Personalizadas'],
     description: 'A maior variedade de joias de prata do Brasil, com peças personalizadas e garantia vitalícia de manutenção.',
     status: 'active',
@@ -66,8 +66,8 @@ export const stores: Record<string, Store> = {
   tegape: {
     name: 'Tegape',
     url: null,
-    banner: null,
-    bannerGradient: 'linear-gradient(135deg, #2a2a3e 0%, #1a1a2e 100%)',
+    logo: null,
+    banner: '/shopify/construction-banner.svg',
     tags: ['Em Breve'],
     description: 'Projeto em desenvolvimento. Em breve novidades.',
     status: 'construction',
@@ -75,8 +75,8 @@ export const stores: Record<string, Store> = {
   trocatech: {
     name: 'TrocaTech',
     url: 'https://www.trocatech.com.br',
-    banner: 'https://www.trocatech.com.br/cdn/shop/files/Banner-Desktop-Compra_308505c4-4517-4e4a-a336-8a83fa5297e6.png?v=1701434154&width=1200',
-    bannerGradient: 'linear-gradient(135deg, #555555 0%, #222222 100%)',
+    logo: 'https://www.trocatech.com.br/cdn/shop/files/Assinatura_Com_Tagline_Vertical_Laranja_01_RGB_510x.png?v=1704912656',
+    banner: '/shopify/trocatech-banner.svg',
     tags: ['Apple', 'MacBook', 'Seminovos', 'Sustentabilidade'],
     description: 'Plataforma de compra e venda de dispositivos Apple seminovos e usados, contribuindo com a economia circular.',
     status: 'active',
@@ -84,8 +84,8 @@ export const stores: Record<string, Store> = {
   testyou: {
     name: 'Testyou',
     url: 'https://www.testyou.com.br',
-    banner: 'https://www.testyou.com.br/cdn/shop/files/Imagem_principal_banner___versao_Desktop_v2_89c3e39a-22f8-4b6d-9010-0eee1cd3f453.png?v=1772724383&width=1200',
-    bannerGradient: 'linear-gradient(135deg, #00d4ff 0%, #0a3d62 100%)',
+    logo: 'https://www.testyou.com.br/cdn/shop/files/Logo.png?v=1756412060&width=300',
+    banner: '/shopify/testyou-banner.svg',
     tags: ['Genética', 'Saúde', 'DNA', 'Medicina Preventiva'],
     description: 'Testes genéticos preventivos e preditivos para decisões mais inteligentes sobre saúde e bem-estar.',
     status: 'active',
@@ -93,8 +93,8 @@ export const stores: Record<string, Store> = {
   joyaclean: {
     name: 'JoyaClean',
     url: 'https://joyacleanbeauty.com.br',
-    banner: null,
-    bannerGradient: 'linear-gradient(135deg, #4caf50 0%, #00796b 100%)',
+    logo: 'https://joyacleanbeauty.com.br/cdn/shop/files/joya_marrom.png?v=1775089542&width=400',
+    banner: '/shopify/joyaclean-banner.svg',
     tags: ['Clean Beauty', 'Skincare', 'Natural', 'Maquiagem'],
     description: 'Maquiagem clean beauty de alta performance com ingredientes naturais aprovados por dermatologistas.',
     status: 'active',
@@ -102,8 +102,8 @@ export const stores: Record<string, Store> = {
   simboliq: {
     name: 'Simboliq',
     url: null,
-    banner: null,
-    bannerGradient: 'linear-gradient(135deg, #2a2a3e 0%, #1a1a2e 100%)',
+    logo: null,
+    banner: '/shopify/construction-banner.svg',
     tags: ['Em Breve'],
     description: 'Projeto em desenvolvimento. Em breve novidades.',
     status: 'construction',

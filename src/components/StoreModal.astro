@@ -5,17 +5,18 @@
   <div class="modal-card">
     <button class="modal-close" aria-label="Fechar">&#x2715;</button>
     <div class="modal-banner" id="modal-banner">
-      <img id="modal-banner-img" src="" alt="" loading="lazy" />
+      <img id="modal-banner-bg" src="" alt="" />
+      <div class="modal-logo-wrap">
+        <img id="modal-logo" src="" alt="" />
+      </div>
     </div>
     <div class="modal-body">
-      <div class="modal-tags" id="modal-tags"></div>
-      <p class="modal-description" id="modal-description"></p>
+      <div id="modal-tags"></div>
+      <p id="modal-description"></p>
     </div>
     <div class="modal-footer">
-      <a id="modal-link" class="modal-cta" href="#" target="_blank" rel="noopener noreferrer">
-        Ir para a loja →
-      </a>
-      <span id="modal-construction" class="modal-construction">🚧 Em Construção</span>
+      <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer">Ir para a loja →</a>
+      <span id="modal-construction">🚧 Em Construção</span>
     </div>
   </div>
 </div>
@@ -63,7 +64,7 @@
     position: absolute;
     top: 0.85rem;
     right: 0.85rem;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.55);
     border: none;
     color: #fff;
     width: 30px;
@@ -79,7 +80,7 @@
   }
 
   .modal-close:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.75);
   }
 
   .modal-banner {
@@ -89,21 +90,80 @@
     overflow: hidden;
   }
 
-  #modal-banner-img {
+  #modal-banner-bg {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+  }
+
+  .modal-logo-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 2rem;
+  }
+
+  #modal-logo {
+    max-height: 64px;
+    max-width: 240px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
   }
 
   .modal-body {
-    padding: 1.5rem 1.5rem 0;
+    padding: 1.4rem 1.5rem 0;
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
-  .modal-tags {
+  #modal-description {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .modal-footer {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+
+  #modal-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0a0a14;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    padding: 0.7rem 1.6rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  #modal-link:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+
+  #modal-construction {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 0.7rem 1.6rem;
+    border-radius: 8px;
+  }
+</style>
+
+<!-- global so dynamically-inserted tag spans get styled -->
+<style is:global>
+  #modal-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
@@ -125,53 +185,15 @@
     color: var(--accent-purple);
     background: rgba(138, 43, 226, 0.06);
   }
-
-  .modal-description {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin: 0;
-  }
-
-  .modal-footer {
-    padding: 1.25rem 1.5rem 1.5rem;
-  }
-
-  .modal-cta {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #0a0a14;
-    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-    padding: 0.7rem 1.6rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-
-  .modal-cta:hover {
-    opacity: 0.88;
-    transform: translateY(-1px);
-  }
-
-  .modal-construction {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-    padding: 0.7rem 1.6rem;
-    border-radius: 8px;
-  }
 </style>
 
 <script>
   import { stores } from '../data/stores';
 
   const overlay = document.getElementById('store-modal')!;
-  const bannerEl = document.getElementById('modal-banner') as HTMLElement;
-  const bannerImg = document.getElementById('modal-banner-img') as HTMLImageElement;
+  const bannerBg = document.getElementById('modal-banner-bg') as HTMLImageElement;
+  const logoEl = document.getElementById('modal-logo') as HTMLImageElement;
+  const logoWrap = overlay.querySelector('.modal-logo-wrap') as HTMLElement;
   const tagsEl = document.getElementById('modal-tags')!;
   const descEl = document.getElementById('modal-description')!;
   const linkEl = document.getElementById('modal-link') as HTMLAnchorElement;
@@ -182,15 +204,15 @@
     const store = stores[storeKey];
     if (!store) return;
 
-    bannerEl.style.background = store.bannerGradient;
+    bannerBg.src = store.banner;
+    bannerBg.alt = store.name;
 
-    if (store.banner) {
-      bannerImg.src = store.banner;
-      bannerImg.alt = store.name;
-      bannerImg.style.display = 'block';
-      bannerImg.onerror = () => { bannerImg.style.display = 'none'; };
+    if (store.logo) {
+      logoEl.src = store.logo;
+      logoEl.alt = store.name;
+      logoWrap.style.display = 'flex';
     } else {
-      bannerImg.style.display = 'none';
+      logoWrap.style.display = 'none';
     }
 
     const isConstruction = store.status === 'construction';
@@ -222,19 +244,10 @@
 
   document.addEventListener('click', (e) => {
     const trigger = (e.target as Element).closest('[data-store]');
-    if (trigger) {
-      const key = trigger.getAttribute('data-store')!;
-      openModal(key);
-    }
+    if (trigger) openModal(trigger.getAttribute('data-store')!);
   });
 
   closeBtn.addEventListener('click', closeModal);
-
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 </script>
